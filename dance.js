@@ -9,10 +9,12 @@ let allGems = ['Алмаз', 'Хризолит', 'Эвклаз', 'Корунд',
 // указанное движение. Успешно выполненное движение должно зарезолвится снова
 // в этого же эльфа с обновленной пастурой.
 
+// эльфы дрыгают руками
+
 function leftHandUp(elf) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      elf.stance = [1, 0, 0, 0];
+      elf.stance[0] = 1;
       resolve(elf);
     }, elf.danceSpeed);
   });
@@ -21,7 +23,7 @@ function leftHandUp(elf) {
 function leftHandDown(elf) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      elf.stance = [0, 0, 0, 0];
+      elf.stance[0] = 0;
       resolve(elf);
     }, elf.danceSpeed);
   });
@@ -30,6 +32,7 @@ function leftHandDown(elf) {
 function rightHandUp(elf) {
   return new Promise((resolve) => {
     setTimeout(() => {
+      elf.stance[1] = 1;
       resolve(elf);
     }, elf.danceSpeed);
   });
@@ -38,17 +41,207 @@ function rightHandUp(elf) {
 function rightHandDown(elf) {
   return new Promise((resolve) => {
     setTimeout(() => {
+      elf.stance[1] = 0;
       resolve(elf);
     }, elf.danceSpeed);
   });
 }
 
+function handsUp(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[0] = 1;
+      elf.stance[1] = 1;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function handsDown(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[0] = 0;
+      elf.stance[1] = 0;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+// эльфы дрыгают ногами
+
+function leftFootUp(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[2] = 1;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function leftFootDown(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[2] = 0;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function rightFootUp(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[3] = 1;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function rightFootDown(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[3] = 0;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function feetUp(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[2] = 1;
+      elf.stance[3] = 1;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function feetDown(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[2] = 0;
+      elf.stance[3] = 0;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+// прост фигуры
+
+function leftsUp(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[0] = 1;
+      elf.stance[2] = 1;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function leftsDown(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[0] = 0;
+      elf.stance[2] = 0;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function rightsUp(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[1] = 1;
+      elf.stance[3] = 1;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function rightsDown(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[1] = 0;
+      elf.stance[3] = 0;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function allUp(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[0] = 1;
+      elf.stance[1] = 1;
+      elf.stance[2] = 1;
+      elf.stance[3] = 1;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function allDown(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[0] = 0;
+      elf.stance[1] = 0;
+      elf.stance[2] = 0;
+      elf.stance[3] = 0;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function handsUpFeetDown(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[0] = 1;
+      elf.stance[1] = 1;
+      elf.stance[2] = 0;
+      elf.stance[3] = 0;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function handsDownFeetUp(elf) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      elf.stance[0] = 0;
+      elf.stance[1] = 0;
+      elf.stance[2] = 1;
+      elf.stance[3] = 1;
+      resolve(elf);
+    }, elf.danceSpeed);
+  });
+}
+
+function moshpit(elf) {
+  let moves = [leftHandUp, leftHandDown, rightHandUp, rightHandDown, handsUp, handsDown, leftFootUp, leftFootDown, rightFootUp, rightFootDown, feetUp, feetDown];
+  let move = Math.floor(Math.random() * moves.length);
+  return moves[move](elf);
+}
 
 // Эта функция принимает в качестве аргумента эльфа и драгоценность, которая
 // сейчас демонстрируется всем эльфам. Здесь нужно дать команду эльфу выполнить
 // какую-то фигуру или команду и вернуть Promise
 function displayGemToElf(elf, gem) {
-  return leftHandUp(elf).then(leftHandDown);
+  if (elf.favouriteGems.indexOf(gem) != -1) return handsUp(elf);
+  if (elf.dislikedGems.indexOf(gem) != -1) return handsDown(elf);
+  switch (gem)
+  {
+    case "Цитрин": return handsUp(elf).then(handsDown).then(handsUp).then(handsDown);
+    case "Аметист": return leftHandUp(elf).then(rightHandUp).then(leftHandDown).then(rightHandDown);
+    case "Кварц": return feetUp(elf).then(feetDown);
+    case "Альмандин": return leftsUp(elf);
+    case "Родолит": return rightsUp(elf);
+    case "Пироп": return handsUpFeetDown(elf).then(handsDownFeetUp);
+    case "Спессартин": return allUp(elf);
+
+    case "Андалузит": return handsDownFeetUp(elf);
+    case "Гиацинт": return handsUpFeetDown(elf);
+
+    default: return moshpit(elf);
+  }
 }
 
 
@@ -56,9 +249,47 @@ function displayGemToElf(elf, gem) {
 // и драгоценность, которая сейчас демонстрируется всем эльфам.
 // Возвращает также танец всех эльфов - массив их Promis'ов
 function continueDance(elvesPromises, gem) {
-  return elvesPromises.map((elfPromise) => {
-    return elfPromise.then(elf => {
-      return displayGemToElf(elf, gem)
-    })
-  })
+  switch(gem) {
+    case "Циркон":
+      return elvesPromises.map((elfPromise) => {
+        return elfPromise.then(elf => {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              displayGemToElf(elf, gem);
+              resolve(elf);
+            }, elf.danceSpeed);
+          });
+        })
+      })
+    case "Танзанит":
+      return elvesPromises.map((elfPromise) => {
+        return elfPromise.then(elf => {
+          elf.danceSpeed /= 2;
+          return displayGemToElf(elf, gem)
+        })
+      })
+    case "Топаз":
+      return elvesPromises.map((elfPromise) => {
+        return elfPromise.then(elf => {
+          elf.danceSpeed *= 2;
+          return displayGemToElf(elf, gem)
+        })
+      })
+    case "Параиба":
+      return elvesPromises.map((elfPromise) => {
+        return elfPromise.then(elf => {
+          return new Promise((resolve) => {
+            Promise.all(elvesPromises);
+            resolve(elf);
+          })
+        })
+      })  
+    
+    default:
+      return elvesPromises.map((elfPromise) => {
+        return elfPromise.then(elf => {
+          return displayGemToElf(elf, gem)
+        })
+      })
+  }
 }

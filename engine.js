@@ -24,21 +24,21 @@ function drawElf(elf) {
   }
 
   if (elf.stance[2] == 1) {
-    rb = '/';
+    rb = ' \\';
   } else {
-    rb = '\\';
+    rb = '| ';
   }
 
   if (elf.stance[3] == 1) {
-    lb = '\\';
+    lb = '/ ';
   } else {
-    lb = '/';
+    lb = ' |';
   }
 
   return {
     head: lt + elf.head + rt,
     torso: lm + '(   )' + rm,
-    legs: ' ' + lb + '   ' + rb + ' '
+    legs: ' ' + lb + ' ' + rb + ' '
   }
 }
 
