@@ -1,21 +1,7 @@
 // Это ваш танец: через какой промежуток времени показать какую драгоценность
-/*let dance = [
-  [200, allGems[0]],
-  [200, allGems[1]],
-  [200, allGems[2]],
-  [200, allGems[3]],
-  [200, allGems[4]],
-  [200, allGems[0]],
-  [200, allGems[1]],
-  [3000, allGems[2]],
-  [200, allGems[3]],
-  [200, allGems[4]],
-];*/
 function generateDance(count) {
   let dance = [];
   dance.push([300, "Андалузит"])
-  dance.push([300, "Параиба"])
-  dance.push([300, "Танзанит"])
   for (let i = 0; i < count - 2; i++) {
     let gem = Math.floor(Math.random() * allGems.length);
     dance.push([300, allGems[gem]])
