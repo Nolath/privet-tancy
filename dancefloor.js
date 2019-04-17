@@ -14,10 +14,11 @@
 function generateDance(count) {
   let dance = [];
   dance.push([300, "Андалузит"])
-  for (let i = 0; i < count - 2; i++) {
-    let gem = Math.floor(Math.random() * allGems.length);
-    dance.push([300, allGems[gem]])
-  }
+  if (typeof count === "number" && count > 2)
+    for (let i = 0; i < count - 2; i++) {
+      let gem = Math.floor(Math.random() * allGems.length);
+      dance.push([300, allGems[gem]])
+    }
   dance.push([300, "Гиацинт"])
   return dance;
 }

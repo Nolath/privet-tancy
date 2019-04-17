@@ -404,3 +404,41 @@ describe("Эльф должен нестандартно реагировать 
 		})
 	});
 });
+function generateDance(count) {
+	let dance = [];
+	dance.push([300, "Андалузит"])
+	if (typeof count === "number" && count > 2)
+	  for (let i = 0; i < count - 2; i++) {
+		let gem = Math.floor(Math.random() * allGems.length);
+		dance.push([300, allGems[gem]])
+	  }
+	dance.push([300, "Гиацинт"])
+	return dance;
+  }
+describe("Генератор танца", function() {
+		it("должен что-то выдать при нечисловом аргументе", function(done) {
+		let dance = generateDance("adasdasd");
+		expect(dance).toBeTruthy();
+		done();
+	});
+	it("должен что-то выдать при кривом числовом аргументе", function(done) {
+		let dance = generateDance(-9000);
+		expect(dance).toBeTruthy();
+		done();
+	});
+	it("должен вернуть танец из 20 фигур", function(done) {
+		let dance = generateDance(20);
+		expect(dance.length).toEqual(20);
+		done();
+	});
+	it("танец должен начинаться с андалузита", function(done) {
+		let dance = generateDance(100);
+		expect(dance[0][1]).toEqual("Андалузит");
+		done();
+	});
+	it("танец должен заканчиваться на гиацинте", function(done) {
+		let dance = generateDance(100);
+		expect(dance[dance.length - 1][1]).toEqual("Гиацинт");
+		done();
+	});
+});
